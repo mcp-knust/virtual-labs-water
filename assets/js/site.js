@@ -174,6 +174,11 @@
       title: "Clean Water Through Materials Modelling",
       kind: "Presentation deck · 18 slides",
       src: "branches/materials/Clean_Water_Through_Materials_Modelling_v2.html"
+    },
+    outreach: {
+      title: "Protecting Our Rivers: From Invisible Toxins to Quantum Tech",
+      kind: "Outreach deck · World Rivers Day 2026",
+      src: "branches/quantum/Submit-this.html"
     }
   };
 
@@ -191,6 +196,8 @@
       if (fallback) fallback.removeAttribute("hidden");
       frame.setAttribute("hidden", "");
     } else {
+      frame.removeAttribute("hidden");
+      if (fallback) fallback.setAttribute("hidden", "");
       frame.setAttribute("src", lab.src);
       frame.setAttribute("title", lab.title + " — interactive lab");
       document.title = lab.title + " · MCP Virtual Laboratory";
