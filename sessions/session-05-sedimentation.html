@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session 05 · Sedimentation: Type I Settling — Water Engineering Virtual Lab</title>
+<link rel="stylesheet" href="../assets/css/lab.css">
+</head>
+<body data-session="5">
+
+<div id="chrome"></div>
+
+<div class="layout">
+  <aside id="sidebar" class="sidebar"></aside>
+
+  <main>
+    <p class="eyebrow">Session 05 &middot; Physical treatment</p>
+    <h1>Sedimentation: Type I Settling</h1>
+    <p class="lede">A settling column converts particle size and density into a settling velocity, and the
+    overflow rate of a basin converts that velocity into a removal efficiency. This is the design link
+    between the laboratory and the clarifier.</p>
+    <div class="row">
+      <span class="chip accent">60 min</span>
+      <span class="chip">Stokes' law</span>
+      <span class="chip">Overflow rate</span>
+      <span class="chip">Settling column</span>
+    </div>
+
+    <h2>Objectives</h2>
+    <ul>
+      <li>Compute the terminal settling velocity of a discrete particle from its diameter and density.</li>
+      <li>Check whether Stokes' law is valid, and correct the velocity when it is not.</li>
+      <li>Relate overflow rate (surface loading) to the removal of a given particle size.</li>
+      <li>Explain why basin area, not depth, controls discrete-particle removal.</li>
+    </ul>
+
+    <h2>Theory</h2>
+    <p>For a smooth sphere falling at terminal velocity in a still fluid, the drag balance gives Stokes'
+    law when the particle Reynolds number is below about 0.5:</p>
+
+    <div class="eq">v<sub>s</sub> = g (&rho;<sub>s</sub> &minus; &rho;<sub>w</sub>) d² / (18 &micro;)</div>
+    <div class="eq">Re = &rho;<sub>w</sub> v<sub>s</sub> d / &micro;</div>
+
+    <p>Above Re &asymp; 0.5 the drag coefficient departs from 24/Re and the velocity must be solved
+    iteratively. The simulation uses the Schiller&ndash;Naumann correlation, which stays accurate into the
+    transitional regime:</p>
+
+    <div class="eq">C<sub>D</sub> = (24/Re)(1 + 0.15 Re<sup>0.687</sup>)</div>
+    <div class="eq">v = &radic;[ 4 g d (&rho;<sub>s</sub> &minus; &rho;<sub>w</sub>) / (3 C<sub>D</sub> &rho;<sub>w</sub>) ]</div>
+
+    <p>For an ideal horizontal-flow basin of plan area A treating flow Q, the overflow rate is
+    v<sub>0</sub> = Q/A. A particle that settles at v<sub>s</sub> is completely removed if
+    v<sub>s</sub> &ge; v<sub>0</sub>; otherwise the fraction removed is v<sub>s</sub>/v<sub>0</sub>,
+    provided it enters at the worst point (the surface at the inlet). Depth cancels out, which is the
+    counter-intuitive result: doubling the depth halves the velocity but doubles the travel time, leaving
+    the removal unchanged.</p>
+
+    <div class="eq">Removal fraction = min(1, v<sub>s</sub> / v<sub>0</sub>) &nbsp;&nbsp;&nbsp; v<sub>0</sub> = Q / A</div>
+
+    <div class="defs">
+      <div><b>Type I</b> &mdash; discrete, non-flocculating particles; velocity constant during settling.</div>
+      <div><b>Type II</b> &mdash; flocculent settling; velocity increases as particles agglomerate.</div>
+      <div><b>Type III / IV</b> &mdash; hindered and compression settling in a sludge blanket.</div>
+    </div>
+
+    <h2>Apparatus</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Apparatus</h3>
+        <ul class="small tight">
+          <li>Settling column, 2.0 m, with ports at 0.25 m intervals</li>
+          <li>Stopwatch and 100 mL sampling bottles</li>
+          <li>Turbidimeter or drying oven and balance for gravimetric solids</li>
+          <li>Thermometer; glass spheres or graded sand for calibration</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Procedure outline</h3>
+        <ol class="small tight">
+          <li>Disperse the sample uniformly in the column.</li>
+          <li>At intervals, withdraw 100 mL from a port and measure turbidity or solids.</li>
+          <li>Plot percentage remaining against time for each depth.</li>
+          <li>Determine the velocity from the slope of the isoconcentration lines.</li>
+          <li>Convert to a design overflow rate with the intended basin area.</li>
+        </ol>
+      </div>
+    </div>
+
+    <h2>Procedure</h2>
+    <ol>
+      <li>Fill the column with the dispersed sample and start the clock at the moment stirring stops.</li>
+      <li>Sample at 0.5 m and 1.5 m depth at 1, 2, 5, 10, 20, 30 and 60 min. Withdraw slowly to avoid
+      disturbing the column.</li>
+      <li>Measure turbidity of each aliquot and compute the fraction remaining relative to the initial
+      value.</li>
+      <li>For each depth, find the time at which the fraction remaining first drops &mdash; that is the time
+      for the fastest particles to traverse that depth.</li>
+      <li>Compute velocities as depth/time and plot against particle size or against percentage removed.</li>
+      <li>Choose a design overflow rate from the removal curve and compute the required plan area for the
+      plant flow.</li>
+    </ol>
+
+    <h2>Simulation &mdash; settling column</h2>
+    <p class="small muted">The particle animation is accelerated; the clock reports the true settling time.
+    Water properties are interpolated from standard tables at the selected temperature.</p>
+
+    <div class="sim">
+      <div class="sim-head">
+        <span class="t">Settling column</span>
+        <span class="hint">2.0 m depth &middot; animation &times;100 real time</span>
+      </div>
+      <div class="sim-body">
+        <div class="sim-stage"><canvas id="s5-canvas"></canvas></div>
+        <div class="sim-controls">
+          <div class="ctl">
+            <div class="ctl-top"><span class="name">Particle diameter</span><span class="val" id="s5-d-v">0.080 mm</span></div>
+            <input type="range" id="s5-d" min="0" max="100" value="45" step="1">
+          </div>
+          <div class="ctl">
+            <div class="ctl-top"><span class="name">Specific gravity</span><span class="val" id="s5-sg-v">2.65</span></div>
+            <input type="range" id="s5-sg" min="105" max="270" value="265" step="1">
+          </div>
+          <div class="ctl">
+            <div class="ctl-top"><span class="name">Water temperature</span><span class="val" id="s5-t-v">20 °C</span></div>
+            <input type="range" id="s5-t" min="0" max="35" value="20" step="1">
+          </div>
+          <div class="ctl">
+            <div class="ctl-top"><span class="name">Basin overflow rate</span><span class="val" id="s5-v0-v">1.0 m/h</span></div>
+            <input type="range" id="s5-v0" min="1" max="100" value="10" step="1">
+          </div>
+
+          <div class="readout accent">
+            <div class="lbl">Settling velocity</div>
+            <div class="num" id="s5-v">&mdash; <small>mm/s</small></div>
+          </div>
+
+          <div class="results">
+            <div class="r"><span class="k">Reynolds number</span><span class="n" id="s5-re">&mdash;</span></div>
+            <div class="r"><span class="k">Flow regime</span><span class="n" id="s5-regime">&mdash;</span></div>
+            <div class="r"><span class="k">Time to settle 2.0 m</span><span class="n" id="s5-time">&mdash;</span></div>
+            <div class="r"><span class="k">Overflow rate</span><span class="n" id="s5-v0">&mdash;</span></div>
+            <div class="r total"><span class="k">Removal efficiency</span><span class="n" id="s5-eff">&mdash;</span></div>
+          </div>
+
+          <div class="sim-actions">
+            <button type="button" class="primary" id="s5-record">Record run</button>
+            <button type="button" class="ghost" id="s5-restart">Restart column</button>
+            <button type="button" class="ghost" id="s5-report">Session report</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Efficiency vs overflow rate</h3>
+    <div class="card" style="padding:8px"><canvas id="s5-curve"></canvas></div>
+
+    <h2>Observation sheet</h2>
+    <div class="table-wrap">
+      <table id="s5-table" data-empty="No runs recorded yet — set the particle parameters and press Record run.">
+        <thead>
+          <tr><th>Run</th><th class="num">d (mm)</th><th class="num">SG</th><th class="num">T (°C)</th>
+          <th class="num">v (mm/s)</th><th class="num">Re</th><th class="num">Efficiency (%)</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="row" style="margin-top:10px">
+      <button type="button" class="ghost sm" data-export="s5-table" data-filename="session-05-sedimentation.csv">Export CSV</button>
+      <button type="button" class="ghost sm" data-clear="s5-table">Clear sheet</button>
+    </div>
+
+    <h2>Interpretation</h2>
+    <p>Sand of 0.2 mm at a specific gravity of 2.65 settles at about 24 mm/s in water at 20 &deg;C, which
+    corresponds to an overflow rate of 86 m/h &mdash; far higher than any clarifier. That is why grit
+    removal is a small, short-detention unit while a clarifier for flocculated material, whose effective
+    density is close to water, runs at 0.5&ndash;1.0 m/h. The overflow rate is a property of the
+    particle, not of the basin depth.</p>
+
+    <div class="callout warn">
+      <b>Reality check.</b> Real basins do not achieve the ideal-curve efficiency. Short-circuiting, wind
+      and density currents, and inlet turbulence reduce performance, which is why design overflow rates are
+      set at roughly 60&ndash;70% of the value the settling test suggests.
+    </div>
+
+    <h2>Review questions</h2>
+
+    <div class="qa">
+      <p class="q">1. Compute the settling velocity of a 0.05 mm particle of specific gravity 2.65 in water at 20 &deg;C, and check Stokes' law.</p>
+      <button type="button" class="toggle ghost sm" aria-expanded="false">Show answer</button>
+      <div class="a"><p>d = 5 &times; 10<sup>&minus;5</sup> m, &rho;<sub>w</sub> = 998 kg/m<sup>3</sup>,
+      &micro; = 1.002 &times; 10<sup>&minus;3</sup> Pa&middot;s. Then v = 9.81 &times; 1652 &times;
+      (2.5 &times; 10<sup>&minus;9</sup>)/(18 &times; 1.002 &times; 10<sup>&minus;3</sup>) &asymp;
+      <b>2.2 &times; 10<sup>&minus;3</sup> m/s (2.2 mm/s)</b>. Re = 998 &times; 0.0022 &times; 5 &times;
+      10<sup>&minus;5</sup> / 1.002 &times; 10<sup>&minus;3</sup> &asymp; 0.11, which is below 0.5, so Stokes'
+      law is valid and no drag correction is needed.</p></div>
+    </div>
+
+    <div class="qa">
+      <p class="q">2. Why does basin depth not affect the removal of a discrete particle?</p>
+      <button type="button" class="toggle ghost sm" aria-expanded="false">Show answer</button>
+      <div class="a"><p>A deeper basin gives the particle more distance to fall but also a longer detention
+      time, in exactly the same proportion: doubling depth doubles both. The controlling group is
+      Q/A, the overflow rate. In practice depth still matters for flocculation, sludge storage and to
+      reduce the effect of short-circuiting, which is why regulations specify a minimum depth.</p></div>
+    </div>
+
+    <div class="qa">
+      <p class="q">3. A basin of 30 m &times; 12 m treats 8 000 m<sup>3</sup>/day. What is the overflow rate, and is a 0.02 mm particle removed?</p>
+      <button type="button" class="toggle ghost sm" aria-expanded="false">Show answer</button>
+      <div class="a"><p>v<sub>0</sub> = 8000/(30 &times; 12) = 22.2 m/d = <b>0.93 m/h</b>. A 0.02 mm particle
+      of SG 2.65 settles at roughly 0.35 mm/s = 1.26 m/h, which exceeds the overflow rate, so it is
+      completely removed. A 0.01 mm particle at about 0.09 mm/s (0.31 m/h) would be only about one third
+      removed. Note that the second particle is not zero-removal: the fraction v/v<sub>0</sub> is removed
+      because it enters part-way down the basin.</p></div>
+    </div>
+
+    <div class="qa">
+      <p class="q">4. Why do real clarifiers perform below the ideal removal curve?</p>
+      <button type="button" class="toggle ghost sm" aria-expanded="false">Show answer</button>
+      <div class="a"><p>Ideal analysis assumes uniform flow, quiescent conditions and particles entering at
+      the surface. Real basins have density currents from temperature differences, wind-driven circulation,
+      inlet jets that carry particles directly to the outlet, and sludge blankets that release gas. These
+      produce a distribution of residence times rather than a single one, so a fraction of the flow
+      short-circuits with a much shorter detention time.</p></div>
+    </div>
+
+    <h2>Record</h2>
+    <div class="row" data-session-complete></div>
+
+    <div id="pager"></div>
+  </main>
+</div>
+
+<footer class="footer">
+  <span>MCP KNUST &middot; Water Engineering Virtual Laboratory</span>
+  <span>Method: settling column test after Camp; Schiller&ndash;Naumann drag correlation</span>
+</footer>
+
+<script src="../assets/js/lab.js"></script>
+<script src="../assets/js/sim/s05-sedimentation.js"></script>
+</body>
+</html>

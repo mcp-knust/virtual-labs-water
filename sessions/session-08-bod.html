@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session 08 · Dissolved Oxygen &amp; BOD₅ — Water Engineering Virtual Lab</title>
+<link rel="stylesheet" href="../assets/css/lab.css">
+</head>
+<body data-session="8">
+
+<div id="chrome"></div>
+
+<div class="layout">
+  <aside id="sidebar" class="sidebar"></aside>
+
+  <main>
+    <p class="eyebrow">Session 08 &middot; Organic pollution</p>
+    <h1>Dissolved Oxygen &amp; BOD<sub>5</sub></h1>
+    <p class="lede">Dissolved oxygen is the life-support parameter of a water body and the controlling
+    variable in activated sludge. BOD<sub>5</sub> measures how much oxygen bacteria will consume oxidising
+    the organic matter in a sample over five days &mdash; the standard index of biodegradable load.</p>
+    <div class="row">
+      <span class="chip accent">60 min</span>
+      <span class="chip">Winkler titration</span>
+      <span class="chip">BOD kinetics</span>
+      <span class="chip">DO sag</span>
+    </div>
+
+    <h2>Objectives</h2>
+    <ul>
+      <li>Determine dissolved oxygen by the Winkler (iodometric) method and correct for sample volume.</li>
+      <li>Compute BOD<sub>5</sub> from dilution, initial and final DO, with a seeded blank correction.</li>
+      <li>Derive the ultimate BOD and the rate constant from a BOD progression.</li>
+      <li>Apply the Streeter&ndash;Phelps equation to predict the oxygen sag downstream of a discharge.</li>
+    </ul>
+
+    <h2>Theory</h2>
+
+    <h3>Dissolved oxygen by the Winkler method</h3>
+    <p>Manganese(II) sulphate and alkaline iodide&ndash;azide are added to a sealed sample. The manganese is
+    oxidised by dissolved oxygen to a higher oxide, which then oxidises iodide to iodine in acid
+    solution. The liberated iodine is titrated with sodium thiosulphate, with starch as indicator:</p>
+
+    <div class="eq">
+      Mn<sup>2+</sup> + 2OH<sup>&minus;</sup> + &frac12;O<sub>2</sub> &rarr; MnO<sub>2</sub> + H<sub>2</sub>O<br>
+      MnO<sub>2</sub> + 2I<sup>&minus;</sup> + 4H<sup>+</sup> &rarr; Mn<sup>2+</sup> + I<sub>2</sub> + 2H<sub>2</sub>O<br>
+      I<sub>2</sub> + 2S<sub>2</sub>O<sub>3</sub><sup>2&minus;</sup> &rarr; 2I<sup>&minus;</sup> + S<sub>4</sub>O<sub>6</sub><sup>2&minus;</sup>
+    </div>
+
+    <div class="eq">DO (mg/L) = (V<sub>thiosulphate</sub> &times; N &times; 8000) / V<sub>sample</sub></div>
+
+    <p>With 0.025 N thiosulphate and a 200 mL aliquot, 1.00 mL of titrant equals 1.00 mg/L of DO, which is
+    why the method is normally set up with those numbers.</p>
+
+    <h3>Biochemical oxygen demand</h3>
+    <p>BOD is a bioassay, not a chemical measurement. A diluted sample is incubated at 20 &deg;C in the dark
+    for five days, and the oxygen consumed is measured. Because the reaction follows first-order kinetics
+    with respect to the remaining biodegradable matter:</p>
+
+    <div class="eq">BOD<sub>t</sub> = L<sub>0</sub>(1 &minus; e<sup>&minus;k t</sup>) &nbsp;&nbsp;&rarr;&nbsp;&nbsp; L<sub>0</sub> = BOD<sub>5</sub> / (1 &minus; e<sup>&minus;5k</sup>)</div>
+
+    <p>For the diluted sample with a seeded blank, where P is the volume fraction of sample:</p>
+
+    <div class="eq">BOD<sub>5</sub> = [ (D<sub>1</sub> &minus; D<sub>2</sub>) &minus; (B<sub>1</sub> &minus; B<sub>2</sub>)(1 &minus; P) ] / P</div>
+
+    <div class="defs">
+      <div><b>Valid depletion</b> &mdash; at least 2 mg/L consumed and at least 1 mg/L remaining; otherwise choose a different dilution.</div>
+      <div><b>Nitrification</b> &mdash; ammonia oxidisers also consume oxygen; inhibited with ATU if carbonaceous BOD is required.</div>
+      <div><b>k</b> &mdash; deoxygenation constant, base e, about 0.1&ndash;0.3 d<sup>&minus;1</sup> for domestic sewage at 20 &deg;C.</div>
+    </div>
+
+    <h3>Oxygen sag</h3>
+    <p>Downstream of a discharge, oxygen is consumed by the waste and replenished from the atmosphere.
+    The Streeter&ndash;Phelps solution gives the deficit D at travel time t:</p>
+
+    <div class="eq">
+      D<sub>t</sub> = (k<sub>d</sub> L<sub>0</sub> / (k<sub>r</sub> &minus; k<sub>d</sub>))
+      (e<sup>&minus;k<sub>d</sub>t</sup> &minus; e<sup>&minus;k<sub>r</sub>t</sup>) + D<sub>0</sub> e<sup>&minus;k<sub>r</sub>t</sup>
+    </div>
+
+    <p>and the critical (minimum) oxygen occurs at</p>
+
+    <div class="eq">t<sub>c</sub> = &frac{1}{k<sub>r</sub> &minus; k<sub>d</sub>} ln[ (k<sub>r</sub>/k<sub>d</sub>) (1 &minus; D<sub>0</sub>(k<sub>r</sub>&minus;k<sub>d</sub>)/(k<sub>d</sub>L<sub>0</sub>)) ]</div>
+
+    <h2>Apparatus and reagents</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Apparatus</h3>
+        <ul class="small tight">
+          <li>BOD bottles 300 mL, glass-stoppered, with ground necks</li>
+          <li>Burette 10 mL with 0.05 mL graduations</li>
+          <li>Incubator at 20 &plusmn; 1 &deg;C, dark</li>
+          <li>DO meter for comparison, magnetic stirrer</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Reagents</h3>
+        <ul class="small tight">
+          <li>Manganese(II) sulphate solution</li>
+          <li>Alkali&ndash;iodide&ndash;azide reagent</li>
+          <li>Concentrated sulphuric acid</li>
+          <li>Sodium thiosulphate 0.025 N, starch indicator</li>
+          <li>Dilution water, seeded and ATU-inhibited</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>Procedure</h2>
+    <ol>
+      <li>Fill a BOD bottle carefully to avoid bubbles; stopper with no air space. Fix oxygen immediately by
+      adding 1 mL each of manganese sulphate and alkali&ndash;iodide below the surface.</li>
+      <li>Stopper and invert several times; allow the precipitate to settle, then invert again.</li>
+      <li>Add 1 mL concentrated sulphuric acid, stopper and mix until the precipitate dissolves.</li>
+      <li>Titrate 200 mL of the solution with 0.025 N thiosulphate to pale yellow, add starch, and continue
+      to the first disappearance of blue.</li>
+      <li>For BOD: prepare at least three dilutions and a seeded blank, measure D<sub>1</sub> in one bottle
+      of each, and incubate the rest at 20 &deg;C for five days in the dark.</li>
+      <li>Measure D<sub>2</sub> after five days; accept only dilutions with 2 mg/L depletion and 1 mg/L
+      residual DO.</li>
+    </ol>
+
+    <h2>Simulation 8A &mdash; Winkler titration</h2>
+    <div class="sim">
+      <div class="sim-head">
+        <span class="t">Winkler DO titration</span>
+        <span class="hint">0.025 N thiosulphate &middot; 200 mL aliquot</span>
+      </div>
+      <div class="sim-body">
+        <div class="sim-stage"><canvas id="s8a-canvas"></canvas></div>
+        <div class="sim-controls">
+          <div class="ctl">
+            <div class="ctl-top"><span class="name">True dissolved oxygen</span><span class="val" id="s8a-do-v">7.80 mg/L</span></div>
+            <input type="range" id="s8a-do" min="5" max="120" value="78" step="1">
+          </div>
+          <div class="ctl">
+            <div class="ctl-top"><span class="name">Aliquot titrated</span><span class="val" id="s8a-vs-v">200 mL</span></div>
+            <input type="range" id="s8a-vs" min="50" max="200" value="200" step="10">
+          </div>
+          <div class="ctl">
+            <div class="ctl-top"><span class="name">Thiosulphate added</span><span class="val" id="s8a-v-v">0.00 mL</span></div>
+            <input type="range" id="s8a-v" min="0" max="1200" value="0" step="1">
+          </div>
+
+          <div class="readout accent">
+            <div class="lbl">Computed DO</div>
+            <div class="num" id="s8a-res">&mdash; <small>mg/L</small></div>
+          </div>
+
+          <div class="results">
+            <div class="r"><span class="k">End point volume</span><span class="n" id="s8a-ve">&mdash;</span></div>
+            <div class="r"><span class="k">Saturation at 20 °C</span><span class="n">9.09 mg/L</span></div>
+            <div class="r total"><span class="k">Status</span><span class="n" id="s8a-status">&mdash;</span></div>
+          </div>
+
+          <div class="sim-actions">
+            <button type="button" class="primary" id="s8a-record">Record DO</button>
+            <button type="button" class="ghost" id="s8a-report">Session report</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Simulation 8B &mdash; BOD<sub>5</sub> and oxygen sag</h2>
+    <p class="small muted">The dilution and incubation model returns the initial and final DO you would read,
+    then computes BOD<sub>5</sub> with the seeded-blank correction and the validity checks.</p>
+
+    <div class="sim">
+      <div class="sim-head">
+        <span class="t">BOD bottle and incubator</span>
+        <span class="hint">20 °C &middot; 5 days &middot; seeded dilution water</span>
+      </div>
+      <div class="sim-body">
+        <div class="sim-stage"><canvas id="s8b-canvas"></canvas></div>
+        <div class="sim-controls">
+          <div class="ctl">
+            <div class="ctl-top"><span class="name">BOD₅ of undiluted sample</span><span class="val" id="s8b-bod-v">220 mg/L</span></div>
+            <input type="range" id="s8b-bod" min="20" max="600" value="220" step="5">
+          </div>
+          <div class="ctl">
+            <div class="ctl-top"><span class="name">Sample fraction P</span><span class="val" id="s8b-p-v">0.020</span></div>
+            <input type="range" id="s8b-p" min="2" max="100" value="2" step="1">
+          </div>
+          <div class="ctl">
+            <div class="ctl-top"><span class="name">Seed depletion (B₁−B₂)</span><span class="val" id="s8b-seed-v">0.20 mg/L</span></div>
+            <input type="range" id="s8b-seed" min="0" max="100" value="20" step="1">
+          </div>
+          <div class="ctl">
+            <div class="ctl-top"><span class="name">Deoxygenation constant k</span><span class="val" id="s8b-k-v">0.20 /d</span></div>
+            <input type="range" id="s8b-k" min="5" max="40" value="20" step="1">
+          </div>
+
+          <div class="readout accent">
+            <div class="lbl">BOD₅ (computed)</div>
+            <div class="num" id="s8b-res">&mdash; <small>mg/L</small></div>
+          </div>
+
+          <div class="results">
+            <div class="r"><span class="k">D₁ initial DO</span><span class="n" id="s8b-d1">&mdash;</span></div>
+            <div class="r"><span class="k">D₂ day-5 DO</span><span class="n" id="s8b-d2">&mdash;</span></div>
+            <div class="r"><span class="k">Depletion</span><span class="n" id="s8b-dep">&mdash;</span></div>
+            <div class="r"><span class="k">Ultimate BOD L₀</span><span class="n" id="s8b-l0">&mdash;</span></div>
+            <div class="r total"><span class="k">Dilution validity</span><span class="n" id="s8b-valid">&mdash;</span></div>
+          </div>
+
+          <div class="sim-actions">
+            <button type="button" class="primary" id="s8b-record">Record BOD</button>
+            <button type="button" class="ghost" id="s8b-report">Session report</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>BOD progression and oxygen sag</h3>
+    <div class="grid">
+      <div class="card" style="padding:8px"><canvas id="s8b-curve"></canvas></div>
+      <div class="card" style="padding:8px"><canvas id="s8b-sag"></canvas></div>
+    </div>
+
+    <h2>Observation sheets</h2>
+    <div class="table-wrap" style="margin-bottom:16px">
+      <table id="s8a-table" data-empty="No DO readings recorded yet.">
+        <thead><tr><th>Run</th><th class="num">Aliquot (mL)</th><th class="num">V titrant (mL)</th><th class="num">DO (mg/L)</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="table-wrap">
+      <table id="s8b-table" data-empty="No BOD runs recorded yet.">
+        <thead>
+          <tr><th>Run</th><th class="num">P</th><th class="num">D₁ (mg/L)</th><th class="num">D₂ (mg/L)</th>
+          <th class="num">BOD₅ (mg/L)</th><th>Validity</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="row" style="margin-top:10px">
+      <button type="button" class="ghost sm" data-export="s8a-table" data-filename="session-08-do.csv">Export DO CSV</button>
+      <button type="button" class="ghost sm" data-export="s8b-table" data-filename="session-08-bod.csv">Export BOD CSV</button>
+      <button type="button" class="ghost sm" data-clear="s8a-table">Clear DO</button>
+      <button type="button" class="ghost sm" data-clear="s8b-table">Clear BOD</button>
+    </div>
+
+    <h2>Interpretation</h2>
+    <p>Domestic sewage has a BOD<sub>5</sub> of roughly 200&ndash;400 mg/L; a treated effluent should be below
+    50 mg/L to discharge to a water body (GS 175-1), and below 20 mg/L for discharge to a sensitive
+    receiving water. The BOD/COD ratio indicates biodegradability: above 0.5 the waste is readily
+    biodegradable and biological treatment will work; below 0.3 a significant fraction is recalcitrant and
+    chemical or physical treatment is needed in addition.</p>
+
+    <div class="callout warn">
+      <b>Invalid results are common.</b> If depletion is under 2 mg/L the dilution was too strong and the
+      result is dominated by analytical noise; if final DO is under 1 mg/L the dilution was too weak and the
+      bacteria may have been oxygen-limited. Both cases require a new dilution series, not a correction factor.
+    </div>
+
+    <h2>Review questions</h2>
+
+    <div class="qa">
+      <p class="q">1. A 200 mL aliquot requires 7.40 mL of 0.025 N thiosulphate. What is the DO?</p>
+      <button type="button" class="toggle ghost sm" aria-expanded="false">Show answer</button>
+      <div class="a"><p>DO = (7.40 &times; 0.025 &times; 8000)/200 = <b>7.40 mg/L</b>. With these standard
+      conditions the titrant volume in millilitres equals the DO in mg/L directly, which is why the method is
+      set up this way. At 20 &deg;C saturation is 9.09 mg/L, so the water is at about 81% saturation.</p></div>
+    </div>
+
+    <div class="qa">
+      <p class="q">2. A diluted sample with P = 0.02 has D₁ = 8.4 and D₂ = 4.1 mg/L; the seeded blank depleted 0.2 mg/L. Compute BOD₅.</p>
+      <button type="button" class="toggle ghost sm" aria-expanded="false">Show answer</button>
+      <div class="a"><p>BOD<sub>5</sub> = [(8.4 &minus; 4.1) &minus; 0.2(1 &minus; 0.02)]/0.02 =
+      [4.3 &minus; 0.196]/0.02 = <b>205 mg/L</b>. The dilution is valid: depletion is 4.3 mg/L (above 2) and
+      final DO is 4.1 mg/L (above 1). Note how the seed correction is scaled by the fraction of dilution
+      water, not by P.</p></div>
+    </div>
+
+    <div class="qa">
+      <p class="q">3. Why is BOD measured at 20 °C in the dark?</p>
+      <button type="button" class="toggle ghost sm" aria-expanded="false">Show answer</button>
+      <div class="a"><p>Temperature sets the rate: a standard temperature makes results comparable between
+      laboratories, and 20 &deg;C is close to natural water temperatures in temperate climates while still
+      allowing measurable depletion in five days. The dark prevents photosynthesis, which would add oxygen
+      and mask the consumption being measured, and prevents algal growth.</p></div>
+    </div>
+
+    <div class="qa">
+      <p class="q">4. A river has L₀ = 20 mg/L, k_d = 0.22/d, k_r = 0.45/d and no initial deficit. When and where is the DO minimum?</p>
+      <button type="button" class="toggle ghost sm" aria-expanded="false">Show answer</button>
+      <div class="a"><p>With D₀ = 0, t<sub>c</sub> = ln(k<sub>r</sub>/k<sub>d</sub>)/(k<sub>r</sub>&minus;k<sub>d</sub>)
+      = ln(2.045)/0.23 = 0.715/0.23 &asymp; <b>3.1 days</b>. The deficit there is
+      (0.22 &times; 20/0.23)(e<sup>&minus;0.68</sup> &minus; e<sup>&minus;1.40</sup>) &asymp; 19.1 &times;
+      (0.507 &minus; 0.247) &asymp; <b>5.0 mg/L</b>. If saturation is 8.5 mg/L the minimum DO is about
+      3.5 mg/L, below the 5 mg/L needed for most fish &mdash; the discharge needs more treatment. At 0.3 m/s
+      the critical point is roughly 80 km downstream.</p></div>
+    </div>
+
+    <h2>Record</h2>
+    <div class="row" data-session-complete></div>
+
+    <div id="pager"></div>
+  </main>
+</div>
+
+<footer class="footer">
+  <span>MCP KNUST &middot; Water Engineering Virtual Laboratory</span>
+  <span>Method: APHA 4500-O C (Winkler), APHA 5210 B (BOD₅)</span>
+</footer>
+
+<script src="../assets/js/lab.js"></script>
+<script src="../assets/js/sim/s08-bod.js"></script>
+</body>
+</html>

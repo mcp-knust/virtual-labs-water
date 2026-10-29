@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session 03 · Total Hardness by EDTA Titration — Water Engineering Virtual Lab</title>
+<link rel="stylesheet" href="../assets/css/lab.css">
+</head>
+<body data-session="3">
+
+<div id="chrome"></div>
+
+<div class="layout">
+  <aside id="sidebar" class="sidebar"></aside>
+
+  <main>
+    <p class="eyebrow">Session 03 &middot; Chemical examination</p>
+    <h1>Total Hardness by EDTA Titration</h1>
+    <p class="lede">Hardness is the sum of calcium and magnesium, expressed as CaCO<sub>3</sub>. It
+    determines soap consumption, scale formation in boilers and distribution mains, and the lime dose in
+    softening. This session determines it complexometrically with EDTA.</p>
+    <div class="row">
+      <span class="chip accent">45 min</span>
+      <span class="chip">Complexometric titration</span>
+      <span class="chip">Limit: 500 mg/L as CaCO<sub>3</sub></span>
+    </div>
+
+    <h2>Objectives</h2>
+    <ul>
+      <li>Determine total hardness by titration with disodium EDTA at pH 10.</li>
+      <li>Determine calcium hardness separately at pH 12.5 and obtain magnesium by difference.</li>
+      <li>Classify the water as soft, moderately hard, hard or very hard.</li>
+      <li>Relate hardness to alkalinity and predict scale or corrosion tendency.</li>
+    </ul>
+
+    <h2>Theory</h2>
+    <p>EDTA (ethylenediaminetetraacetic acid, as its disodium salt) forms a 1:1 chelate with
+    Ca<sup>2+</sup> and Mg<sup>2+</sup>. The end point is shown by a metal-ion indicator that is
+    wine-red while bound to calcium or magnesium and free blue when the metal has been taken up by EDTA:</p>
+
+    <div class="eq">
+      Ca<sup>2+</sup> + EDTA<sup>4&minus;</sup> &rarr; [Ca&ndash;EDTA]<sup>2&minus;</sup> &nbsp;&nbsp;(1:1, pH 10)<br>
+      Mg<sup>2+</sup> + EDTA<sup>4&minus;</sup> &rarr; [Mg&ndash;EDTA]<sup>2&minus;</sup> &nbsp;&nbsp;(1:1, pH 10)
+    </div>
+
+    <p>Because the reaction is 1:1 and calcium carbonate has an equivalent weight of 50 g/eq, one
+    millilitre of 0.010 M EDTA corresponds to 1.00 mg of CaCO<sub>3</sub> in a 50 mL sample, that is
+    20 mg/L:</p>
+
+    <div class="eq">Hardness (mg/L as CaCO<sub>3</sub>) = (V<sub>EDTA</sub> &times; M<sub>EDTA</sub> &times; 100 000) / V<sub>sample</sub></div>
+
+    <div class="defs">
+      <div><b>Total hardness</b> &mdash; Ca + Mg, titrated at pH 10 with Eriochrome Black T.</div>
+      <div><b>Calcium hardness</b> &mdash; Ca only, titrated at pH 12.5 with murexide or calcon; Mg precipitates as Mg(OH)<sub>2</sub>.</div>
+      <div><b>Magnesium hardness</b> &mdash; total minus calcium.</div>
+      <div><b>Carbonate hardness</b> &mdash; the portion equal to alkalinity, removed by boiling; the remainder is non-carbonate (permanent) hardness.</div>
+    </div>
+
+    <h3>Classification</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Class</th><th class="num">mg/L as CaCO<sub>3</sub></th><th>Practical significance</th></tr></thead>
+        <tbody>
+          <tr><td>Soft</td><td class="num">0&ndash;75</td><td>Low buffering; corrosive to metal if very low</td></tr>
+          <tr><td>Moderately hard</td><td class="num">75&ndash;150</td><td>Typical acceptable supply</td></tr>
+          <tr><td>Hard</td><td class="num">150&ndash;300</td><td>Scale in heaters; high soap consumption</td></tr>
+          <tr><td>Very hard</td><td class="num">&gt; 300</td><td>Softening normally required for industrial use</td></tr>
+          <tr><td>Exceeds GS 175-1</td><td class="num">&gt; 500</td><td>Not acceptable as drinking water on aesthetic grounds</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Apparatus and reagents</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Apparatus</h3>
+        <ul class="small tight">
+          <li>Burette 50 mL, conical flasks 250 mL</li>
+          <li>Pipettes 25 and 50 mL, volumetric flask 100 mL</li>
+          <li>Magnetic stirrer and pH meter</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Reagents</h3>
+        <ul class="small tight">
+          <li>Disodium EDTA, 0.010 M, standardised against CaCO<sub>3</sub></li>
+          <li>Ammonia&ndash;ammonium chloride buffer, pH 10</li>
+          <li>Eriochrome Black T indicator</li>
+          <li>Sodium hydroxide 1 M (for the calcium titration) and murexide indicator</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>Procedure</h2>
+    <ol>
+      <li>Pipette 50 mL of sample into a conical flask and add 2 mL of pH 10 buffer.</li>
+      <li>Add a pinch of Eriochrome Black T; the solution turns wine-red.</li>
+      <li>Titrate with 0.010 M EDTA, swirling continuously, to the first clear blue with no trace of
+      purple. Record V<sub>total</sub>.</li>
+      <li>For calcium: take a second 50 mL aliquot, add 2 mL of 1 M NaOH to reach pH 12.5, add murexide,
+      and titrate from orange-red to violet. Record V<sub>Ca</sub>.</li>
+      <li>Compute total and calcium hardness; magnesium is the difference.</li>
+      <li>Run a blank on deionised water and subtract if the blank exceeds 0.1 mL.</li>
+    </ol>
+
+    <h2>Simulation &mdash; EDTA titration</h2>
+    <p class="small muted">Set the water's hardness and magnesium fraction, choose the titration mode, then
+    open the stopcock. The indicator colour, the end point and the computed hardness all follow the
+    1:1 stoichiometry.</p>
+
+    <div class="sim">
+      <div class="sim-head">
+        <span class="t">Complexometric titration</span>
+        <span class="hint">0.010 M EDTA &middot; 50 mL aliquot</span>
+      </div>
+      <div class="sim-body">
+        <div class="sim-stage"><canvas id="s3-canvas"></canvas></div>
+        <div class="sim-controls">
+          <label class="ctl">
+            <span class="ctl-top"><span class="name">Titration mode</span></span>
+            <select id="s3-mode">
+              <option value="total">Total hardness &mdash; EBT, pH 10</option>
+              <option value="calcium">Calcium hardness &mdash; murexide, pH 12.5</option>
+            </select>
+          </label>
+
+          <div class="ctl">
+            <div class="ctl-top"><span class="name">Total hardness of sample</span><span class="val" id="s3-th-v">240 mg/L</span></div>
+            <input type="range" id="s3-th" min="10" max="700" value="240" step="5">
+          </div>
+
+          <div class="ctl">
+            <div class="ctl-top"><span class="name">Magnesium fraction</span><span class="val" id="s3-mg-v">30%</span></div>
+            <input type="range" id="s3-mg" min="0" max="70" value="30" step="1">
+          </div>
+
+          <div class="ctl">
+            <div class="ctl-top"><span class="name">EDTA added</span><span class="val" id="s3-v-v">0.00 mL</span></div>
+            <input type="range" id="s3-v" min="0" max="3000" value="0" step="1">
+          </div>
+
+          <div class="readout accent">
+            <div class="lbl" id="s3-mode-lbl">Total hardness by EDTA</div>
+            <div class="num" id="s3-result">&mdash; <small>mg/L</small></div>
+          </div>
+
+          <div class="results">
+            <div class="r"><span class="k">End point volume</span><span class="n" id="s3-ve">&mdash;</span></div>
+            <div class="r"><span class="k">Calcium hardness</span><span class="n" id="s3-ca">&mdash;</span></div>
+            <div class="r"><span class="k">Magnesium hardness</span><span class="n" id="s3-mgh">&mdash;</span></div>
+            <div class="r total"><span class="k">Class</span><span class="n" id="s3-class">&mdash;</span></div>
+          </div>
+
+          <div class="row"><span class="chip" id="s3-chip">Not started</span></div>
+
+          <div class="sim-actions">
+            <button type="button" class="primary" id="s3-record">Record titration</button>
+            <button type="button" class="ghost" id="s3-auto">Titrate to end point</button>
+            <button type="button" class="ghost" id="s3-report">Session report</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <b>Why the pH matters.</b> Below pH 10 the EDTA&ndash;metal complex is weaker and the end point
+      runs early; above pH 10 magnesium begins to precipitate as hydroxide and is not titrated at all.
+      The buffer holds the pH in the narrow window where both metals are fully complexed.
+    </div>
+
+    <h2>Observation sheet</h2>
+    <div class="table-wrap">
+      <table id="s3-table" data-empty="No titrations recorded yet — run the burette and press Record titration.">
+        <thead>
+          <tr><th>Run</th><th>Mode</th><th class="num">V EDTA (mL)</th><th class="num">Hardness (mg/L)</th><th>Class</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="row" style="margin-top:10px">
+      <button type="button" class="ghost sm" data-export="s3-table" data-filename="session-03-hardness.csv">Export CSV</button>
+      <button type="button" class="ghost sm" data-clear="s3-table">Clear sheet</button>
+    </div>
+
+    <h2>Interpretation</h2>
+    <p>Hardness below about 60 mg/L as CaCO<sub>3</sub> makes water aggressive to cement-lined and metal
+    pipework, because it has little capacity to deposit a protective carbonate film. Above roughly
+    300 mg/L, calcium carbonate scales heat exchangers and kettles, and soap consumption rises. Where
+    hardness exceeds alkalinity, the excess is non-carbonate hardness (sulphates and chlorides of Ca and
+    Mg) which cannot be removed by boiling and needs lime&ndash;soda softening or ion exchange.</p>
+
+    <div class="callout warn">
+      <b>Indicator chemistry.</b> Eriochrome Black T is itself a weak acid and its colour depends on pH.
+      If the buffer is omitted the indicator shows a false blue before the true end point, giving a
+      hardness several tens of mg/L too low.
+    </div>
+
+    <h2>Review questions</h2>
+
+    <div class="qa">
+      <p class="q">1. A 50 mL sample requires 7.35 mL of 0.010 M EDTA. Compute total hardness and classify it.</p>
+      <button type="button" class="toggle ghost sm" aria-expanded="false">Show answer</button>
+      <div class="a"><p>Hardness = (7.35 &times; 0.010 &times; 100 000)/50 = <b>147 mg/L as CaCO<sub>3</sub></b>,
+      which falls in the moderately hard class (75&ndash;150). It is a normal supply, compliant with
+      GS 175-1, though it will produce some scale in a kettle.</p></div>
+    </div>
+
+    <div class="qa">
+      <p class="q">2. Why is magnesium not titrated at pH 12.5?</p>
+      <button type="button" class="toggle ghost sm" aria-expanded="false">Show answer</button>
+      <div class="a"><p>At pH 12.5 the solubility product of Mg(OH)<sub>2</sub> is exceeded and magnesium
+      precipitates, so it is no longer available to bind the indicator or EDTA. Only calcium is titrated,
+      and magnesium is obtained as total minus calcium. If the precipitate is heavy it can adsorb
+      indicator and bias the calcium result slightly low, so the NaOH is added slowly with swirling.</p></div>
+    </div>
+
+    <div class="qa">
+      <p class="q">3. A water has hardness 220 mg/L and alkalinity 140 mg/L as CaCO<sub>3</sub>. What are the carbonate and non-carbonate fractions?</p>
+      <button type="button" class="toggle ghost sm" aria-expanded="false">Show answer</button>
+      <div class="a"><p>Carbonate hardness is the smaller of the two, 140 mg/L; non-carbonate hardness is
+      220 &minus; 140 = <b>80 mg/L</b>. Boiling removes the carbonate fraction only, so 80 mg/L of
+      permanent hardness remains after boiling &mdash; that is the fraction requiring softening.</p></div>
+    </div>
+
+    <div class="qa">
+      <p class="q">4. What happens to a hardness result if the EDTA solution has absorbed moisture and is weaker than its nominal 0.010 M?</p>
+      <button type="button" class="toggle ghost sm" aria-expanded="false">Show answer</button>
+      <div class="a"><p>The titre volume rises, so hardness is reported <em>high</em> if the nominal
+      molarity is used in the calculation. This is why EDTA must be standardised against a calcium
+      carbonate or calcium chloride standard, and why a blank is run. The error is proportional:
+      a solution 2% weaker gives a result 2% high.</p></div>
+    </div>
+
+    <h2>Record</h2>
+    <div class="row" data-session-complete></div>
+
+    <div id="pager"></div>
+  </main>
+</div>
+
+<footer class="footer">
+  <span>MCP KNUST &middot; Water Engineering Virtual Laboratory</span>
+  <span>Method: APHA 2340 C (EDTA titrimetric method)</span>
+</footer>
+
+<script src="../assets/js/lab.js"></script>
+<script src="../assets/js/sim/s03-hardness.js"></script>
+</body>
+</html>

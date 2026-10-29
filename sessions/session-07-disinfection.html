@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session 07 · Breakpoint Chlorination — Water Engineering Virtual Lab</title>
+<link rel="stylesheet" href="../assets/css/lab.css">
+</head>
+<body data-session="7">
+
+<div id="chrome"></div>
+
+<div class="layout">
+  <aside id="sidebar" class="sidebar"></aside>
+
+  <main>
+    <p class="eyebrow">Session 07 &middot; Disinfection</p>
+    <h1>Breakpoint Chlorination</h1>
+    <p class="lede">Chlorine added to water containing ammonia is consumed before any free residual appears.
+    The dose&ndash;residual curve has a peak of combined chlorine and then a sharp dip called the breakpoint.
+    Operating on the wrong side of it wastes chlorine and under-disinfects.</p>
+    <div class="row">
+      <span class="chip accent">45 min</span>
+      <span class="chip">Chlorine demand</span>
+      <span class="chip">Ct concept</span>
+      <span class="chip">Target: 0.2&ndash;1.0 mg/L free</span>
+    </div>
+
+    <h2>Objectives</h2>
+    <ul>
+      <li>Determine the chlorine demand, breakpoint dose and free residual for a given ammonia concentration.</li>
+      <li>Explain the reactions that produce combined chlorine and destroy it at the breakpoint.</li>
+      <li>Compute the Ct product and estimate disinfection credit.</li>
+      <li>Select an operating dose for a target free residual at the tap.</li>
+    </ul>
+
+    <h2>Theory</h2>
+    <p>In water at pH 7&ndash;8, chlorine exists as hypochlorous acid and hypochlorite in proportions set
+    by the dissociation constant (pK<sub>a</sub> 7.5):</p>
+
+    <div class="eq">Cl<sub>2</sub> + H<sub>2</sub>O &harr; HOCl + HCl &nbsp;&nbsp;&nbsp; HOCl &harr; H<sup>+</sup> + OCl<sup>&minus;</sup></div>
+
+    <p>HOCl is the far stronger disinfectant because it is uncharged and penetrates the cell wall. If
+    ammonia is present, chlorine reacts with it in sequence:</p>
+
+    <div class="eq">
+      NH<sub>3</sub> + HOCl &rarr; NH<sub>2</sub>Cl + H<sub>2</sub>O &nbsp;&nbsp;(monochloramine)<br>
+      2NH<sub>2</sub>Cl + HOCl &rarr; N<sub>2</sub> + 3HCl + H<sub>2</sub>O &nbsp;&nbsp;(breakpoint)
+    </div>
+
+    <p>The stoichiometry is about 7.6 mg of chlorine per mg of ammonia nitrogen at the breakpoint, which
+    is why a water with 0.5 mg/L NH<sub>3</sub>&ndash;N needs roughly 3.8 mg/L before any free chlorine
+    survives. Up to about 5:1 a combined residual builds; beyond that the chloramines are destroyed and the
+    residual falls to almost zero at 7.6:1; past the breakpoint every additional milligram appears as free
+    chlorine.</p>
+
+    <div class="eq">D<sub>breakpoint</sub> &asymp; 7.6 &times; [NH<sub>3</sub>&ndash;N] &nbsp;&nbsp;&nbsp; Ct = residual &times; contact time</div>
+
+    <p>Disinfection is not a function of concentration alone. The product of residual and contact time
+    (Ct, in mg&middot;min/L) predicts inactivation, with a temperature correction: cold water needs a much
+    larger Ct for the same log removal. Typical free-chlorine Ct for 3-log <em>Giardia</em> inactivation is
+    roughly 230 mg&middot;min/L at 10 &deg;C and 100 mg&middot;min/L at 20 &deg;C.</p>
+
+    <h2>Apparatus and reagents</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Apparatus</h3>
+        <ul class="small tight">
+          <li>Six 500 mL chlorine demand bottles, glass-stoppered</li>
+          <li>DPD colorimeter or amperometric titrator</li>
+          <li>Burette and pipettes for hypochlorite dosing</li>
+          <li>pH meter, thermometer, stopwatch</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Reagents</h3>
+        <ul class="small tight">
+          <li>Sodium hypochlorite stock, standardised (about 1 g/L as Cl<sub>2</sub>)</li>
+          <li>DPD free and total chlorine reagents</li>
+          <li>Ammonium chloride standard for spiking</li>
+          <li>Dechlorinating agent (sodium thiosulphate) for safe disposal</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>Procedure</h2>
+    <ol>
+      <li>Measure the ammonia nitrogen concentration of the sample (Nessler or phenate method).</li>
+      <li>Prepare a dose series spanning 0 to about 12 mg/L as Cl<sub>2</sub>, in 500 mL bottles.</li>
+      <li>Mix and hold for the chosen contact time at constant temperature, in the dark.</li>
+      <li>Measure free and total chlorine by DPD. Combined chlorine is total minus free.</li>
+      <li>Plot total and free residual against dose; locate the peak and the breakpoint minimum.</li>
+      <li>Select the operating dose as the breakpoint plus the target free residual, then check the Ct
+      against the required value for the target organism and temperature.</li>
+    </ol>
+
+    <h2>Simulation &mdash; chlorine demand curve</h2>
+    <p class="small muted">The model uses the 7.6:1 stoichiometry, a combined-residual peak at 5:1, and a
+    linear free-residual region beyond the breakpoint. The Ct and log-removal figures use temperature-corrected
+    tabulated values for <em>Giardia</em>.</p>
+
+    <div class="sim">
+      <div class="sim-head">
+        <span class="t">Chlorination contact chamber</span>
+        <span class="hint">free residual target 0.2&ndash;1.0 mg/L</span>
+      </div>
+      <div class="sim-body">
+        <div class="sim-stage"><canvas id="s7-canvas"></canvas></div>
+        <div class="sim-controls">
+          <div class="ctl">
+            <div class="ctl-top"><span class="name">Ammonia nitrogen</span><span class="val" id="s7-n-v">0.40 mg/L</span></div>
+            <input type="range" id="s7-n" min="5" max="200" value="40" step="1">
+          </div>
+          <div class="ctl">
+            <div class="ctl-top"><span class="name">Chlorine dose</span><span class="val" id="s7-d-v">3.00 mg/L</span></div>
+            <input type="range" id="s7-d" min="0" max="1200" value="380" step="1">
+          </div>
+          <div class="ctl">
+            <div class="ctl-top"><span class="name">Contact time</span><span class="val" id="s7-t-v">30 min</span></div>
+            <input type="range" id="s7-t" min="5" max="120" value="30" step="1">
+          </div>
+          <div class="ctl">
+            <div class="ctl-top"><span class="name">Water temperature</span><span class="val" id="s7-temp-v">15 °C</span></div>
+            <input type="range" id="s7-temp" min="5" max="25" value="15" step="1">
+          </div>
+
+          <div class="readout accent">
+            <div class="lbl">Free chlorine residual</div>
+            <div class="num" id="s7-free">&mdash; <small>mg/L</small></div>
+          </div>
+
+          <div class="results">
+            <div class="r"><span class="k">Combined residual</span><span class="n" id="s7-comb">&mdash;</span></div>
+            <div class="r"><span class="k">Breakpoint dose</span><span class="n" id="s7-bp">&mdash;</span></div>
+            <div class="r"><span class="k">Ct product</span><span class="n" id="s7-ct">&mdash;</span></div>
+            <div class="r"><span class="k">Ct required, 3-log</span><span class="n" id="s7-ctreq">&mdash;</span></div>
+            <div class="r total"><span class="k">Log inactivation achieved</span><span class="n" id="s7-log">&mdash;</span></div>
+          </div>
+
+          <div class="row"><span class="chip" id="s7-chip">Awaiting dose</span></div>
+
+          <div class="sim-actions">
+            <button type="button" class="primary" id="s7-record">Record dose</button>
+            <button type="button" class="ghost" id="s7-report">Session report</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Residual vs dose</h3>
+    <div class="card" style="padding:8px"><canvas id="s7-curve"></canvas></div>
+
+    <h2>Observation sheet</h2>
+    <div class="table-wrap">
+      <table id="s7-table" data-empty="No doses recorded yet — set the dose and press Record dose.">
+        <thead>
+          <tr><th>Run</th><th class="num">NH₃–N (mg/L)</th><th class="num">Dose (mg/L)</th>
+          <th class="num">Free (mg/L)</th><th class="num">Ct (mg·min/L)</th><th class="num">Log removal</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="row" style="margin-top:10px">
+      <button type="button" class="ghost sm" data-export="s7-table" data-filename="session-07-breakpoint.csv">Export CSV</button>
+      <button type="button" class="ghost sm" data-clear="s7-table">Clear sheet</button>
+    </div>
+
+    <h2>Interpretation</h2>
+    <p>An operating dose just past the breakpoint is unstable: any rise in ammonia moves the breakpoint and
+    the residual collapses. Plants therefore either strip ammonia before chlorination, chloraminate
+    deliberately (holding a combined residual of 1&ndash;2 mg/L as a stable secondary disinfectant), or dose
+    to breakpoint plus a margin and monitor free chlorine continuously. The margin has a cost: every
+    milligram above breakpoint is a milligram that forms trihalomethanes with natural organic matter.</p>
+
+    <div class="callout warn">
+      <b>Safety.</b> Never mix hypochlorite with acid: chlorine gas is released. Dose into water, never into
+      concentrated acid, and keep the dosing point downstream of any acid or coagulant injection.
+    </div>
+
+    <h2>Review questions</h2>
+
+    <div class="qa">
+      <p class="q">1. A water contains 0.6 mg/L ammonia nitrogen. Estimate the breakpoint dose and the dose for 0.5 mg/L free residual.</p>
+      <button type="button" class="toggle ghost sm" aria-expanded="false">Show answer</button>
+      <div class="a"><p>Breakpoint &asymp; 7.6 &times; 0.6 = <b>4.6 mg/L as Cl<sub>2</sub></b>. For 0.5 mg/L
+      free residual the dose must exceed the breakpoint by that residual, so about <b>5.1 mg/L</b>. In
+      practice a margin is added for ammonia variability, and the actual dose is set from the measured
+      curve rather than the stoichiometric ratio.</p></div>
+    </div>
+
+    <div class="qa">
+      <p class="q">2. Why does the residual fall almost to zero at the breakpoint?</p>
+      <button type="button" class="toggle ghost sm" aria-expanded="false">Show answer</button>
+      <div class="a"><p>At the breakpoint, chlorine oxidises the chloramines themselves: monochloramine is
+      attacked to release nitrogen gas and chloride, so both the combined residual and the applied chlorine
+      are consumed. The residual is minimal precisely because the oxidant is being used up in destroying
+      the ammonia rather than remaining as a measurable species. Adding more chlorine then accumulates as
+      free HOCl/OCl<sup>&minus;</sup>.</p></div>
+    </div>
+
+    <div class="qa">
+      <p class="q">3. Why is Ct used instead of residual alone?</p>
+      <button type="button" class="toggle ghost sm" aria-expanded="false">Show answer</button>
+      <div class="a"><p>Inactivation is a time-integrated exposure: a low residual for a long time can be as
+      effective as a high residual for a short time. Ct captures that trade-off and is the basis of
+      regulatory disinfection credit. The relationship is not perfectly linear (the Chick&ndash;Watson model
+      uses an exponent on concentration), but Ct tables are the practical design tool.</p></div>
+    </div>
+
+    <div class="qa">
+      <p class="q">4. Why is free chlorine more effective than the same concentration of monochloramine?</p>
+      <button type="button" class="toggle ghost sm" aria-expanded="false">Show answer</button>
+      <div class="a"><p>HOCl is small, uncharged and diffuses readily through the cell envelope, and it reacts
+      with a wide range of intracellular targets. Monochloramine is bulkier, less reactive and must be
+      actively taken up, so it inactivates more slowly &mdash; often by a factor of 40&ndash;100 in Ct terms.
+      Its advantage is persistence: it decays much more slowly in distribution, which is why it is used as a
+      secondary disinfectant.</p></div>
+    </div>
+
+    <h2>Record</h2>
+    <div class="row" data-session-complete></div>
+
+    <div id="pager"></div>
+  </main>
+</div>
+
+<footer class="footer">
+  <span>MCP KNUST &middot; Water Engineering Virtual Laboratory</span>
+  <span>Method: APHA 4500-Cl (DPD colorimetric); Ct values after USEPA tables</span>
+</footer>
+
+<script src="../assets/js/lab.js"></script>
+<script src="../assets/js/sim/s07-disinfection.js"></script>
+</body>
+</html>

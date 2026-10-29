@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session 09 · Chemical Oxygen Demand — Water Engineering Virtual Lab</title>
+<link rel="stylesheet" href="../assets/css/lab.css">
+</head>
+<body data-session="9">
+
+<div id="chrome"></div>
+
+<div class="layout">
+  <aside id="sidebar" class="sidebar"></aside>
+
+  <main>
+    <p class="eyebrow">Session 09 &middot; Organic pollution</p>
+    <h1>Chemical Oxygen Demand</h1>
+    <p class="lede">COD measures everything oxidisable by hot acid dichromate &mdash; biodegradable or not.
+    Paired with BOD<sub>5</sub>, it gives the biodegradability ratio that decides whether a waste can go to
+    a biological plant or needs chemical pre-treatment.</p>
+    <div class="row">
+      <span class="chip accent">45 min</span>
+      <span class="chip">Dichromate reflux</span>
+      <span class="chip">Closed-tube or open reflux</span>
+      <span class="chip">Limit: 250 mg/L discharge</span>
+    </div>
+
+    <h2>Objectives</h2>
+    <ul>
+      <li>Determine COD by closed-reflux dichromate digestion and ferrous ammonium sulphate titration.</li>
+      <li>Compute COD from blank and sample titres, with attention to sample volume and normality.</li>
+      <li>Use the BOD<sub>5</sub>/COD ratio to judge biodegradability and select a treatment route.</li>
+      <li>Explain chloride interference and the role of mercury(II) sulphate.</li>
+    </ul>
+
+    <h2>Theory</h2>
+    <p>Organic matter is oxidised by potassium dichromate in strong sulphuric acid at 150 &deg;C for two
+    hours, with silver sulphate as catalyst:</p>
+
+    <div class="eq">
+      C<sub>n</sub>H<sub>2n</sub>O<sub>n</sub> + Cr<sub>2</sub>O<sub>7</sub><sup>2&minus;</sup> + H<sup>+</sup>
+      &rarr; CO<sub>2</sub> + Cr<sup>3+</sup> + H<sub>2</sub>O
+    </div>
+
+    <p>Dichromate is orange; chromium(III) is green, so the digestate darkens with increasing organic load.
+    The excess dichromate is titrated with ferrous ammonium sulphate (FAS) using ferroin indicator:</p>
+
+    <div class="eq">Cr<sub>2</sub>O<sub>7</sub><sup>2&minus;</sup> + 6Fe<sup>2+</sup> + 14H<sup>+</sup> &rarr; 2Cr<sup>3+</sup> + 6Fe<sup>3+</sup> + 7H<sub>2</sub>O</div>
+
+    <div class="eq">COD (mg/L) = (V<sub>blank</sub> &minus; V<sub>sample</sub>) &times; N<sub>FAS</sub> &times; 8000 / V<sub>sample</sub></div>
+
+    <div class="defs">
+      <div><b>Blank</b> &mdash; reagent water carried through the whole digestion; its titre represents the dichromate initially present.</div>
+      <div><b>Chloride interference</b> &mdash; Cl<sup>&minus;</sup> is oxidised to Cl<sub>2</sub>, adding apparent COD; masked with HgSO<sub>4</sub> at 10:1 Hg:Cl by mass.</div>
+      <div><b>BOD<sub>5</sub>/COD</b> &mdash; above 0.5 readily biodegradable; 0.3&ndash;0.5 biodegradable with acclimatisation; below 0.3 poorly biodegradable.</div>
+    </div>
+
+    <h2>Apparatus and reagents</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Apparatus</h3>
+        <ul class="small tight">
+          <li>COD digestion tubes or reflux flasks with condensers</li>
+          <li>Block heater or mantle at 150 &deg;C</li>
+          <li>Burette 25 mL, pipettes, safety shield</li>
+          <li>Spectrophotometer if using the colorimetric variant</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Reagents</h3>
+        <ul class="small tight">
+          <li>Potassium dichromate 0.0417 M (0.25 N)</li>
+          <li>Sulphuric acid with silver sulphate catalyst</li>
+          <li>Mercury(II) sulphate</li>
+          <li>Ferroin indicator, ferrous ammonium sulphate 0.25 N (standardised daily)</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>Procedure</h2>
+    <ol>
+      <li>Homogenise the sample; dilute if COD is expected above 700 mg/L.</li>
+      <li>Pipette 20 mL sample into a digestion tube; add HgSO<sub>4</sub>, then dichromate and acid
+      reagent in the specified order, with mixing and cooling between additions.</li>
+      <li>Prepare a blank with 20 mL reagent water and treat identically.</li>
+      <li>Reflux at 150 &deg;C for 2 h, then cool to room temperature.</li>
+      <li>Titrate the blank with FAS to the first reddish-brown; record. Titrate each sample similarly.</li>
+      <li>Compute COD and, with the paired BOD<sub>5</sub>, the biodegradability ratio.</li>
+    </ol>
+
+    <h2>Simulation &mdash; reflux and titration</h2>
+    <p class="small muted">Set the sample's true COD, choose the aliquot and FAS normality, then titrate the
+    digestate. The blank titre is 25.00 mL; the sample titre falls as COD rises, because more dichromate has
+    been consumed during digestion.</p>
+
+    <div class="sim">
+      <div class="sim-head">
+        <span class="t">COD reflux and titration</span>
+        <span class="hint">0.25 N FAS &middot; blank titre 25.00 mL</span>
+      </div>
+      <div class="sim-body">
+        <div class="sim-stage"><canvas id="s9-canvas"></canvas></div>
+        <div class="sim-controls">
+          <div class="ctl">
+            <div class="ctl-top"><span class="name">True COD of sample</span><span class="val" id="s9-cod-v">240 mg/L</span></div>
+            <input type="range" id="s9-cod" min="10" max="900" value="240" step="10">
+          </div>
+          <div class="ctl">
+            <div class="ctl-top"><span class="name">Sample volume</span><span class="val" id="s9-vs-v">20 mL</span></div>
+            <input type="range" id="s9-vs" min="5" max="50" value="20" step="5">
+          </div>
+          <div class="ctl">
+            <div class="ctl-top"><span class="name">FAS normality</span><span class="val" id="s9-n-v">0.250 N</span></div>
+            <input type="range" id="s9-n" min="5" max="50" value="25" step="1">
+          </div>
+          <div class="ctl">
+            <div class="ctl-top"><span class="name">FAS added to sample</span><span class="val" id="s9-v-v">0.00 mL</span></div>
+            <input type="range" id="s9-v" min="0" max="2500" value="0" step="1">
+          </div>
+          <div class="ctl">
+            <div class="ctl-top"><span class="name">Paired BOD₅</span><span class="val" id="s9-bod-v">120 mg/L</span></div>
+            <input type="range" id="s9-bod" min="5" max="500" value="120" step="5">
+          </div>
+
+          <div class="readout accent">
+            <div class="lbl">COD (computed)</div>
+            <div class="num" id="s9-res">&mdash; <small>mg/L</small></div>
+          </div>
+
+          <div class="results">
+            <div class="r"><span class="k">Sample titre</span><span class="n" id="s9-ve">&mdash;</span></div>
+            <div class="r"><span class="k">BOD₅ / COD</span><span class="n" id="s9-ratio">&mdash;</span></div>
+            <div class="r"><span class="k">Biodegradability</span><span class="n" id="s9-class">&mdash;</span></div>
+            <div class="r total"><span class="k">Discharge limit (250 mg/L)</span><span class="n" id="s9-limit">&mdash;</span></div>
+          </div>
+
+          <div class="sim-actions">
+            <button type="button" class="primary" id="s9-record">Record result</button>
+            <button type="button" class="ghost" id="s9-auto">Titrate to end point</button>
+            <button type="button" class="ghost" id="s9-report">Session report</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Biodegradability</h3>
+    <div class="card" style="padding:8px"><canvas id="s9-curve"></canvas></div>
+
+    <h2>Observation sheet</h2>
+    <div class="table-wrap">
+      <table id="s9-table" data-empty="No results recorded yet — titrate and press Record result.">
+        <thead>
+          <tr><th>Run</th><th class="num">V sample (mL)</th><th class="num">FAS (N)</th>
+          <th class="num">Titre (mL)</th><th class="num">COD (mg/L)</th><th class="num">BOD/COD</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="row" style="margin-top:10px">
+      <button type="button" class="ghost sm" data-export="s9-table" data-filename="session-09-cod.csv">Export CSV</button>
+      <button type="button" class="ghost sm" data-clear="s9-table">Clear sheet</button>
+    </div>
+
+    <h2>Interpretation</h2>
+    <p>COD is always greater than or equal to BOD because it oxidises material that bacteria cannot attack in
+    five days, including lignins, humic substances and many solvents. A large gap between the two is normal
+    for industrial effluent and is the reason a biological plant alone may not meet the discharge limit. For
+    domestic sewage the ratio is typically 0.4&ndash;0.6, and a sudden drop in the ratio at an operating plant
+    usually signals an industrial discharge entering the sewer.</p>
+
+    <div class="callout warn">
+      <b>Chloride is the classic interference.</b> Sea water or a saline industrial waste can contain
+      10 000 mg/L chloride, which would add hundreds of mg/L of apparent COD. Mercury(II) sulphate precipitates
+      it as HgCl<sub>2</sub>, but the reagent is toxic and the dose must be calculated from a measured
+      chloride concentration.
+    </div>
+
+    <h2>Review questions</h2>
+
+    <div class="qa">
+      <p class="q">1. A 20 mL sample requires 22.40 mL of 0.25 N FAS; the blank requires 25.00 mL. Compute COD.</p>
+      <button type="button" class="toggle ghost sm" aria-expanded="false">Show answer</button>
+      <div class="a"><p>COD = (25.00 &minus; 22.40) &times; 0.25 &times; 8000/20 = 2.60 &times; 0.25 &times; 400 =
+      <b>260 mg/L</b>. That slightly exceeds the 250 mg/L discharge limit, so the effluent would need
+      further treatment or dilution before discharge.</p></div>
+    </div>
+
+    <div class="qa">
+      <p class="q">2. Why is COD always greater than BOD for the same sample?</p>
+      <button type="button" class="toggle ghost sm" aria-expanded="false">Show answer</button>
+      <div class="a"><p>Dichromate at 150 &deg;C oxidises almost all organic carbon, including compounds that
+      are recalcitrant to enzymatic attack within five days, and it also oxidises some inorganic species
+      (chloride, sulphide, nitrite). BOD measures only what the microbial consortium can metabolise in five
+      days at 20 &deg;C, which is a subset. The difference is the non-biodegradable fraction, plus any
+      interference in the COD test.</p></div>
+    </div>
+
+    <div class="qa">
+      <p class="q">3. A waste has COD 800 mg/L and BOD₅ 160 mg/L. What does the ratio tell you and what would you propose?</p>
+      <button type="button" class="toggle ghost sm" aria-expanded="false">Show answer</button>
+      <div class="a"><p>Ratio = 0.2, below 0.3, so the waste is poorly biodegradable and a conventional
+      activated sludge plant would achieve limited removal. Options: chemical oxidation (Fenton or ozone)
+      as a pre-treatment to break recalcitrant molecules, adsorption onto activated carbon for the residual,
+      or anaerobic digestion if the waste is concentrated and warm enough. A treatability test with
+      respirometry would confirm before design.</p></div>
+    </div>
+
+    <div class="qa">
+      <p class="q">4. Why must the FAS solution be standardised daily?</p>
+      <button type="button" class="toggle ghost sm" aria-expanded="false">Show answer</button>
+      <div class="a"><p>Iron(II) is oxidised slowly by dissolved oxygen, so the normality falls over time,
+      especially in a partly filled bottle. Since COD is directly proportional to the FAS normality used in
+      the calculation, an unstandardised solution biases every result. Standardisation against potassium
+      dichromate takes a few minutes and is done on the same day as the samples.</p></div>
+    </div>
+
+    <h2>Record</h2>
+    <div class="row" data-session-complete></div>
+
+    <div id="pager"></div>
+  </main>
+</div>
+
+<footer class="footer">
+  <span>MCP KNUST &middot; Water Engineering Virtual Laboratory</span>
+  <span>Method: APHA 5220 C (closed reflux, titrimetric)</span>
+</footer>
+
+<script src="../assets/js/lab.js"></script>
+<script src="../assets/js/sim/s09-cod.js"></script>
+</body>
+</html>

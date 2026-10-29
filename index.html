@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Water Engineering Virtual Laboratory — MCP KNUST</title>
+<meta name="description" content="Ten-session virtual water engineering laboratory: turbidity, alkalinity, hardness, jar test, sedimentation, filtration, disinfection, BOD, COD and pipe hydraulics. Interactive apparatus with live calculations.">
+<link rel="stylesheet" href="assets/css/lab.css">
+</head>
+<body data-page="hub">
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">MCP</span>
+      <span class="brand-name">KNUST &middot; Water Engineering Virtual Lab</span>
+    </a>
+    <span class="topbar-spacer"></span>
+    <div class="topbar-meta">College of Science &middot; Department of Civil Engineering<br>Virtual laboratory manual &middot; 2026</div>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <h2>Sessions</h2>
+    <div class="side-progress">
+      <div class="lbl"><span>Completed</span><span id="progress-count">0 / 10</span></div>
+      <div class="bar"><span id="progress-bar"></span></div>
+    </div>
+    <ol id="hub-nav"></ol>
+    <h2>Reference</h2>
+    <ol>
+      <li><a href="#standards"><span class="sn">&sect;</span><span>Drinking-water limits</span></a></li>
+      <li><a href="#method"><span class="sn">&sect;</span><span>How to use the lab</span></a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="hero">
+      <p class="eyebrow">Virtual laboratory &middot; Water and wastewater engineering</p>
+      <h1>Water Engineering Virtual Laboratory</h1>
+      <p class="lede">Ten practical sessions covering the physical, chemical and hydraulic analysis of
+      drinking water and wastewater. Each session pairs a bench-scale method with an interactive
+      apparatus you can operate, an observation sheet that records your readings, and calculations
+      that update as you change the operating conditions.</p>
+      <div class="row">
+        <span class="chip accent">10 sessions</span>
+        <span class="chip">Bench methods</span>
+        <span class="chip">Interactive apparatus</span>
+        <span class="chip">Live calculations</span>
+        <span class="chip">Report export</span>
+      </div>
+    </div>
+
+    <h2>Sessions</h2>
+    <p class="small muted">Work through them in order; later sessions assume the water-quality
+    parameters measured in earlier ones. Progress is stored in this browser only.</p>
+
+    <ol class="session-list" id="session-list"></ol>
+
+    <h2 id="method">How to use the lab</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>1 &middot; Read the brief</h3>
+        <p class="small tight">Objectives, theory and procedure come first. The equations on each page are
+        the ones the calculation panel uses, so you can check every number by hand.</p>
+        <h3>2 &middot; Operate the apparatus</h3>
+        <p class="small tight">Sliders and buttons change real operating variables &mdash; dose, flow rate,
+        particle size, contact time. The readouts respond continuously, not at fixed presets.</p>
+      </div>
+      <div class="card">
+        <h3>3 &middot; Record readings</h3>
+        <p class="small tight">Use <em>Record reading</em> to append a row to the observation sheet. Rows
+        persist while the page is open and can be exported as CSV.</p>
+        <h3>4 &middot; Complete the session</h3>
+        <p class="small tight">Answer the review questions, then mark the session complete. The sidebar
+        keeps a tally so you can leave and return.</p>
+      </div>
+      <div class="card">
+        <h3>Report</h3>
+        <p class="small tight">Every session page prints cleanly to PDF: browser menu &rarr; Print.
+        Simulation panels are dropped from the print layout and answer blocks are expanded.</p>
+        <h3>Data</h3>
+        <p class="small tight">Observation sheets export to CSV for use in a spreadsheet or the
+        analysis section of your report.</p>
+      </div>
+    </div>
+
+    <h2 id="standards">Drinking-water quality limits</h2>
+    <p class="small muted">Reference values used for the pass/fail verdicts in this lab. Ghana Standards
+    Authority GS 175-1 and WHO Guidelines for Drinking-water Quality, 4th edition.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Parameter</th><th class="num">Limit</th><th>Basis</th><th>Session</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Turbidity</td><td class="num">5 NTU</td><td>Aesthetic / disinfection efficiency (ideally &lt; 1 NTU)</td><td>01</td></tr>
+          <tr><td>Colour, apparent</td><td class="num">15 TCU</td><td>Aesthetic</td><td>01</td></tr>
+          <tr><td>pH</td><td class="num">6.5&ndash;8.5</td><td>Operational (corrosion / treatment)</td><td>02</td></tr>
+          <tr><td>Total alkalinity</td><td class="num">200 mg/L as CaCO&#8323;</td><td>Operational; &lt; 20 mg/L is poorly buffered</td><td>02</td></tr>
+          <tr><td>Total hardness</td><td class="num">500 mg/L as CaCO&#8323;</td><td>Aesthetic; scale and soap consumption</td><td>03</td></tr>
+          <tr><td>Free chlorine residual</td><td class="num">0.2&ndash;1.0 mg/L</td><td>Disinfection at point of use</td><td>07</td></tr>
+          <tr><td>Dissolved oxygen</td><td class="num">&ge; 5 mg/L</td><td>Aquatic life; treatment target &ge; 4 mg/L</td><td>08</td></tr>
+          <tr><td>BOD&#8325; (discharge)</td><td class="num">50 mg/L</td><td>Effluent discharge to water bodies</td><td>08, 09</td></tr>
+          <tr><td>COD (discharge)</td><td class="num">250 mg/L</td><td>Effluent discharge to water bodies</td><td>09</td></tr>
+          <tr><td>Flow velocity in mains</td><td class="num">0.6&ndash;1.5 m/s</td><td>Scour below 0.6, erosion and head loss above 1.5</td><td>10</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <b>Scope.</b> These are teaching simulations calibrated to standard methods
+      (APHA Standard Methods for the Examination of Water and Wastewater). They are not a substitute
+      for accredited laboratory analysis, and simulated readings are not field data.
+    </div>
+
+    <div class="pager">
+      <a href="sessions/session-01-turbidity.html"><span class="dir">Start &rarr;</span>01 &middot; Turbidity &amp; Apparent Colour</a>
+    </div>
+  </main>
+</div>
+
+<footer class="footer">
+  <span>MCP KNUST &middot; Water Engineering Virtual Laboratory</span>
+  <span>Methods after APHA Standard Methods &middot; Limits after GS 175-1 and WHO GDWQ 4th ed.</span>
+</footer>
+
+<script src="assets/js/lab.js"></script>
+<script>
+(function () {
+  var list = document.getElementById("session-list");
+  var nav = document.getElementById("hub-nav");
+  list.innerHTML = Lab.sessions.map(function (s) {
+    return '<li><a href="sessions/' + s.slug + '.html">' +
+      '<span class="n">' + Lab.pad(s.n) + '</span>' +
+      '<span><span class="t">' + s.title + '</span><span class="d">' + s.sub + '</span></span>' +
+      '<span class="meta"><span class="done-tick" data-progress-tick="' + s.n + '" aria-hidden="true"></span>' + s.min + ' min</span>' +
+      '</a></li>';
+  }).join("");
+  nav.innerHTML = Lab.sessions.map(function (s) {
+    return '<li><a href="sessions/' + s.slug + '.html"><span class="sn">' + Lab.pad(s.n) + '</span><span>' + s.title + '</span></a></li>';
+  }).join("");
+
+  // refresh ticks on return from a session
+  window.addEventListener("pageshow", function () {
+    Lab.qsa("[data-progress-tick]").forEach(function (el) {
+      el.classList.toggle("on", Lab.isDone(Number(el.getAttribute("data-progress-tick"))));
+    });
+    var bar = document.getElementById("progress-bar");
+    var count = document.getElementById("progress-count");
+    var done = Lab.getProgress().length;
+    if (bar) bar.style.width = Math.round(done / Lab.sessions.length * 100) + "%";
+    if (count) count.textContent = done + " / " + Lab.sessions.length;
+  });
+})();
+</script>
+</body>
+</html>
