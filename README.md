@@ -81,6 +81,29 @@ the equations they use, and each simulation engine implements them directly:
   clean lab report.
 - Responsive down to phone width; no external requests, so it works offline.
 
+## Featured: World Water Day 2026 interactive lab
+
+`sessions/World_Water_Day_2026_Interactive_Laboratory.html` is a self-contained, projection-format
+event lab for World Water Day 2026 (Clean Rivers, Sustainable Livelihoods). Ten stations, one
+experiment per screen, each with a live canvas, controls and worked output:
+
+| Station | Topic |
+|---|---|
+| 01 | Vectors + matrix |
+| 02 | Electron configuration |
+| 03 | Chemical bonding |
+| 04 | Bits |
+| 05 | Qubit |
+| 06 | Quantum gates |
+| 07 | Superposition |
+| 08 | Entanglement |
+| 09 | Pollutant capture (MOF) |
+| 10 | VQE energy |
+
+It opens on a cover slide; press Enter to begin. Styles, scripts and artwork are embedded, so it works
+offline and from any path. It is linked from the lab home and from the "World Water Day" entry in the
+sidebar of every session page.
+
 ## Standards used for verdicts
 
 Ghana Standards Authority GS 175-1 and the WHO Guidelines for Drinking-water Quality (4th edition):

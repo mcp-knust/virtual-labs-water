@@ -83,6 +83,9 @@
         '<div class="bar"><span id="progress-bar"></span></div>' +
         "</div>" +
         "<ol>" + items + "</ol>" +
+        '<h2>World Water Day</h2>' +
+        '<ol><li><a href="World_Water_Day_2026_Interactive_Laboratory.html">' +
+        '<span class="sn">\u2605</span><span>World Water Day 2026 \u00b7 interactive lab</span></a></li></ol>' +
         '<h2>Reference</h2>' +
         '<ol><li><a href="../index.html"><span class="sn">\u2190</span><span>Lab home</span></a></li></ol>';
     }
