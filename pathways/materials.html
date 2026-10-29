@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Materials Modelling · MCP Virtual Laboratory</title>
+<meta name="description" content="Session 11, Equation of State and Lattice Dynamics, with the Clean Water Through Materials Modelling deck on molecular dynamics, DFT and machine learning.">
+<meta name="theme-color" content="#0d6a5d">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230d6a5d'/><path d='M16 6c4 5 6.5 8.2 6.5 11.6A6.5 6.5 0 0 1 9.5 17.6C9.5 14.2 12 11 16 6z' fill='%23eafaf5'/></svg>">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark" aria-hidden="true">MCP</span>
+      <span class="brand-text">
+        <strong>Virtual Laboratory</strong>
+        <small>KNUST · Mathematical and Computational Physics</small>
+      </span>
+    </a>
+
+    <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16"/>
+      </svg>
+      <span class="sr-only">Menu</span>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="Primary">
+      <a href="../index.html">Overview</a>
+      <a href="../index.html#pathways" aria-current="page">Pathways</a>
+      <a href="../index.html#sessions">Sessions</a>
+      <a href="../labs.html">Interactive labs</a>
+      <a href="../index.html#about">About</a>
+    </nav>
+
+    <button class="icon-btn" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark appearance">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/>
+      </svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 14.4A8.4 8.4 0 0 1 9.6 4a8.4 8.4 0 1 0 10.4 10.4z"/>
+      </svg>
+      <span class="sr-only">Toggle appearance</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-head">
+    <div class="container">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Overview</a> <span aria-hidden="true">/</span> <a href="../index.html#pathways">Pathways</a> <span aria-hidden="true">/</span> Materials Modelling</nav>
+      <p class="eyebrow" style="margin-top: 18px">Pathway · Session 11</p>
+      <h1>Materials Modelling</h1>
+      <p class="lede">Equation of state and lattice dynamics, supported by a presentation on how molecular dynamics, density functional theory and machine learning are used to design materials that remove contaminants from water.</p>
+      <div class="row" style="margin-top: 20px"><span class="pill">Session 11</span><span class="pill">18 slides</span><span class="pill pill--live">Deck available</span></div>
+    </div>
+  </section>
+  <div class="page-body">
+    <div class="container">
+      <div class="split">
+        <div class="stack">
+          <div class="panel">
+            <p class="eyebrow">The session</p>
+            <h2 style="margin-top: 12px">Equation of State &amp; Lattice Dynamics</h2>
+            <p>
+              The session treats a solid as a lattice of atoms whose response to temperature and
+              pressure is written as an equation of state, and whose collective vibrations are
+              described as lattice dynamics. The same logic — write the physics, then compute the
+              consequence — is what the accompanying presentation applies to water treatment.
+            </p>
+            <div class="row" style="margin-top: 18px">
+              <a class="btn btn--primary" href="../viewer.html?lab=materials">Open the deck <span class="arrow" aria-hidden="true">→</span></a>
+              <a class="btn" href="../branches/materials/Clean_Water_Through_Materials_Modelling_v2.html" target="_blank" rel="noopener">Open in a new tab</a>
+            </div>
+          </div>
+
+          <div class="panel">
+            <p class="eyebrow">Presentation</p>
+            <h2 style="margin-top: 12px">Clean Water Through Materials Modelling</h2>
+            <p>
+              Eighteen slides prepared for World Rivers Day 2026 under the theme clean rivers and
+              sustainable livelihoods. The deck walks from the sources and health effects of water
+              contamination, through the treatment steps used at Barekese, to the three computational
+              methods the programme teaches.
+            </p>
+            <p>
+              Two of the slides are working applications rather than static figures. The factor
+              analysis moves temperature, pressure, pH and competing-ion concentration and shows how
+              the predicted capture efficiency responds. The machine-learning slide trains a small
+              network on simulated material samples and lets you watch the decision boundary form.
+            </p>
+
+            <h3 style="margin-top: 22px">Slide sequence</h3>
+            <ol class="session-list" style="margin-top: 6px">
+              <li>
+                <span class="n">01</span>
+                <div><strong>Clean Water Through Materials Modelling</strong></div>
+                <span class="tag">Cover</span>
+              </li>
+              <li>
+                <span class="n">02</span>
+                <div><strong>Aims of this session</strong></div>
+                <span class="tag">Scope</span>
+              </li>
+              <li>
+                <span class="n">03</span>
+                <div><strong>Why water matters to us</strong></div>
+                <span class="tag">Context</span>
+              </li>
+              <li>
+                <span class="n">04</span>
+                <div><strong>Where water pollution comes from</strong></div>
+                <span class="tag">Sources</span>
+              </li>
+              <li>
+                <span class="n">05</span>
+                <div><strong>Inside the water: ions, EDCs and germs</strong></div>
+                <span class="tag">Contaminants</span>
+              </li>
+              <li>
+                <span class="n">06</span>
+                <div><strong>Effects of polluted water</strong></div>
+                <span class="tag">Health</span>
+              </li>
+              <li>
+                <span class="n">07</span>
+                <div><strong>Simple ways to make water safe</strong></div>
+                <span class="tag">Household treatment</span>
+              </li>
+              <li>
+                <span class="n">08</span>
+                <div><strong>Barekese, Ghana: steps 1 to 3</strong></div>
+                <span class="tag">Treatment train</span>
+              </li>
+              <li>
+                <span class="n">09</span>
+                <div><strong>Barekese, Ghana: steps 4 to 6</strong></div>
+                <span class="tag">Treatment train</span>
+              </li>
+              <li>
+                <span class="n">10</span>
+                <div><strong>What is materials modelling?</strong></div>
+                <span class="tag">MD · DFT · ML</span>
+              </li>
+              <li>
+                <span class="n">11</span>
+                <div><strong>Molecular dynamics: what we simulate</strong></div>
+                <span class="tag">Method</span>
+              </li>
+              <li>
+                <span class="n">12</span>
+                <div><strong>Molecular dynamics: a movie of atoms</strong></div>
+                <span class="tag">Interactive</span>
+              </li>
+              <li>
+                <span class="n">13</span>
+                <div><strong>Settings that control a simulation</strong></div>
+                <span class="tag">Parameters</span>
+              </li>
+              <li>
+                <span class="n">14</span>
+                <div><strong>DFT: how strong is the grip?</strong></div>
+                <span class="tag">Method</span>
+              </li>
+              <li>
+                <span class="n">15</span>
+                <div><strong>What is machine learning?</strong></div>
+                <span class="tag">Method</span>
+              </li>
+              <li>
+                <span class="n">16</span>
+                <div><strong>Machine learning: finding patterns</strong></div>
+                <span class="tag">Interactive</span>
+              </li>
+              <li>
+                <span class="n">17</span>
+                <div><strong>From computer to clean water</strong></div>
+                <span class="tag">Workflow</span>
+              </li>
+              <li>
+                <span class="n">18</span>
+                <div><strong>Thank you</strong></div>
+                <span class="tag">Close</span>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="stack">
+        <div class="panel">
+          <h2>Session record</h2>
+          <dl class="fact-list">
+            <div><dt>Pathway</dt><dd>Materials Modelling</dd></div>
+            <div><dt>Session</dt><dd>11</dd></div>
+            <div><dt>Deck</dt><dd>18 slides</dd></div>
+            <div><dt>Applications</dt><dd>2 embedded</dd></div>
+            <div><dt>Format</dt><dd>Single HTML file</dd></div>
+            <div><dt>Event</dt><dd>World Rivers Day 2026</dd></div>
+          </dl>
+        </div>
+          <div class="panel">
+            <h2>Methods covered</h2>
+            <dl class="fact-list">
+              <div><dt>MD</dt><dd>Molecular dynamics</dd></div>
+              <div><dt>DFT</dt><dd>Density functional theory</dd></div>
+              <div><dt>ML</dt><dd>Machine learning</dd></div>
+            </dl>
+            <p style="margin-top: 14px; font-size: 13px">
+              Molecular dynamics follows atoms as they move; density functional theory computes the
+              electrons that hold them together; machine learning finds patterns across many candidate
+              materials so that only the most promising are tested in the laboratory.
+            </p>
+          </div>
+          <div class="notice">
+            <p>
+              <strong>Navigation.</strong> The deck advances with the arrow keys or the on-slide
+              controls. Interactive slides respond to their own sliders and buttons.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h2>MCP Virtual Laboratory</h2>
+        <p>
+          Mathematical and Computational Physics, Department of Physics, KNUST. Sessions 01–14,
+          published as static pages for classroom projection and independent study.
+        </p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <ul>
+          <li><a href="../index.html">Overview</a></li>
+          <li><a href="../index.html#sessions">Session catalogue</a></li>
+          <li><a href="../labs.html">Interactive labs</a></li>
+          <li><a href="../index.html#about">About the laboratory</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Pathways</h2>
+        <ul>
+          <li><a href="../pathways/water.html">Water &amp; Wastewater</a></li>
+          <li><a href="../pathways/materials.html">Materials Modelling</a></li>
+          <li><a href="../pathways/quantum.html">Quantum Science</a></li>
+          <li><a href="../pathways/renewable.html">Renewable Energy</a></li>
+          <li><a href="../pathways/seismology.html">Seismology</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© <span data-year>2026</span> Mathematical and Computational Physics, KNUST</span>
+      <span class="mono">Static site · no tracking · runs offline</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

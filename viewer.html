@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laboratory viewer · MCP Virtual Laboratory</title>
+<meta name="description" content="Full-screen viewer for the interactive laboratories of the MCP Virtual Laboratory.">
+<meta name="theme-color" content="#0b2129">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230d6a5d'/><path d='M16 6c4 5 6.5 8.2 6.5 11.6A6.5 6.5 0 0 1 9.5 17.6C9.5 14.2 12 11 16 6z' fill='%23eafaf5'/></svg>">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body class="viewer-body">
+
+<header class="viewer-bar">
+  <a href="labs.html" class="v-back">← Labs</a>
+  <div class="v-title">
+    <strong data-viewer-title>Laboratory viewer</strong>
+    <span data-viewer-kind>Select a laboratory</span>
+  </div>
+  <a data-viewer-open href="#" target="_blank" rel="noopener" hidden>Open in new tab</a>
+  <button type="button" onclick="if(document.fullscreenElement){document.exitFullscreen()}else{document.documentElement.requestFullscreen()}">Full screen</button>
+</header>
+
+<main id="main" class="viewer-main">
+<h1 class="sr-only">Interactive laboratory viewer</h1>
+  <div class="viewer-frame-wrap">
+    <iframe data-viewer-frame title="Interactive laboratory" allow="fullscreen" loading="eager"></iframe>
+    <div class="viewer-fallback" data-viewer-fallback hidden>
+      <p><strong>No laboratory selected.</strong></p>
+      <p>Open a laboratory from the list to load it here.</p>
+      <p><a class="btn btn--primary btn--small" href="labs.html">Choose a laboratory</a></p>
+    </div>
+  </div>
+</main>
+
+<script src="assets/js/site.js"></script>
+</body>
+</html>
